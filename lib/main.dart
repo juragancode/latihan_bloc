@@ -18,7 +18,9 @@ class MyApp extends StatelessWidget {
 }
 
 class CounterCubit extends Cubit<int> {
-  CounterCubit() : super(0);
+  CounterCubit({this.inisialData = 0}) : super(inisialData);
+
+  int inisialData;
 
   void tambahData() {
     emit(state + 1);
@@ -30,7 +32,7 @@ class CounterCubit extends Cubit<int> {
 }
 
 class HomePage extends StatelessWidget {
-  CounterCubit mycounter = CounterCubit();
+  CounterCubit mycounter = CounterCubit(inisialData: 0);
 
   @override
   Widget build(BuildContext context) {
@@ -42,23 +44,17 @@ class HomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           StreamBuilder(
+            initialData: mycounter.inisialData,
             stream: mycounter.stream,
             builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(
-                  child: Text(
-                    "Loading...",
-                    style: TextStyle(fontSize: 50),
+              return Center(
+                child: Text(
+                  "${snapshot.data}",
+                  style: TextStyle(
+                    fontSize: 50,
                   ),
-                );
-              } else {
-                return Center(
-                  child: Text(
-                    "${snapshot.data}",
-                    style: TextStyle(fontSize: 50),
-                  ),
-                );
-              }
+                ),
+              );
             },
           ),
           SizedBox(height: 20),
