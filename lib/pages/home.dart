@@ -9,45 +9,41 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Flutter Bloc"),
+        title: Text("Flutter Listener"),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          BlocBuilder<Counter, int>(
-            buildWhen: (previous, current) {
-              if (current % 5 == 0) {
+          BlocListener<Counter, int>(
+            bloc: mycounter,
+            listener: (context, state) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text("Kelipatan 10!"),
+                ),
+              );
+            },
+            listenWhen: (previous, current) {
+              if (current % 10 == 0) {
                 return true;
               } else {
                 return false;
               }
             },
-            bloc: mycounter,
-            builder: (context, state) {
-              return Center(
-                child: Text(
-                  "$state",
-                  style: TextStyle(
-                    fontSize: 50,
+            child: BlocBuilder<Counter, int>(
+              bloc: mycounter,
+              builder: (context, state) {
+                return Center(
+                  child: Text(
+                    "$state",
+                    style: TextStyle(
+                      fontSize: 50,
+                    ),
                   ),
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
-          // StreamBuilder(
-          //   initialData: mycounter.inisialData,
-          //   stream: mycounter.stream,
-          //   builder: (context, snapshot) {
-          //     return Center(
-          //       child: Text(
-          //         "${snapshot.data}",
-          //         style: TextStyle(
-          //           fontSize: 50,
-          //         ),
-          //       ),
-          //     );
-          //   },
-          // ),
           SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
