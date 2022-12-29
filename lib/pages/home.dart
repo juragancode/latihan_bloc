@@ -15,6 +15,13 @@ class HomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           BlocBuilder<Counter, int>(
+            buildWhen: (previous, current) {
+              if (current % 5 == 0) {
+                return true;
+              } else {
+                return false;
+              }
+            },
             bloc: mycounter,
             builder: (context, state) {
               return Center(
