@@ -21,6 +21,8 @@ class CounterCubit extends Cubit<int> {
   CounterCubit({this.inisialData = 0}) : super(inisialData);
 
   int inisialData;
+  int? current;
+  int? next;
 
   void tambahData() {
     emit(state + 1);
@@ -28,6 +30,19 @@ class CounterCubit extends Cubit<int> {
 
   void kurangData() {
     emit(state - 1);
+  }
+
+  @override
+  void onChange(Change<int> change) {
+    super.onChange(change);
+    current = change.currentState;
+    next = change.nextState;
+  }
+
+  @override
+  void onError(Object error, StackTrace stackTrace) {
+    super.onError(error, stackTrace);
+    print(error);
   }
 }
 
@@ -48,11 +63,29 @@ class HomePage extends StatelessWidget {
             stream: mycounter.stream,
             builder: (context, snapshot) {
               return Center(
-                child: Text(
-                  "${snapshot.data}",
-                  style: TextStyle(
-                    fontSize: 50,
-                  ),
+                child: Column(
+                  children: [
+                    Text(
+                      "${snapshot.data}",
+                      style: TextStyle(
+                        fontSize: 50,
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      "Current : ${mycounter.current}",
+                      style: TextStyle(
+                        fontSize: 50,
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      "Next : ${mycounter.next}",
+                      style: TextStyle(
+                        fontSize: 50,
+                      ),
+                    ),
+                  ],
                 ),
               );
             },
