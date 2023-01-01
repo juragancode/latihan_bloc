@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:latihan_bloc/bloc/counter.dart';
@@ -8,7 +6,9 @@ import 'package:latihan_bloc/pages/data_widget.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Counter myCounter = BlocProvider.of<Counter>(context);
+    // Counter myCounter = BlocProvider.of<Counter>(context);
+    Counter myCounter = context.read<Counter>();
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Flutter Bloc Provider"),
