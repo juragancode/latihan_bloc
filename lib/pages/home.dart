@@ -18,10 +18,14 @@ class HomePage extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => BlocProvider.value(
-                value: myCounter,
-                child: const OtherPage(),
-              ),
+              builder: (context) => const OtherPage(),
+
+              // Navigator.of(context).push(
+              //   MaterialPageRoute(
+              //     builder: (context) => BlocProvider.value(
+              //       value: myCounter,
+              //       child: const OtherPage(),
+              //     ),
 
               // builder: (context) => BlocProvider(
               //   create: (context) => myCounter,
