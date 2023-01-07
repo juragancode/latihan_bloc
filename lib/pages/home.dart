@@ -13,7 +13,7 @@ class HomePage extends StatelessWidget {
     ThemeBloc myTheme = context.read<ThemeBloc>();
     return Scaffold(
       appBar: AppBar(
-        title: Text("Flutter Bloc Provider"),
+        title: Text("Flutter Multi Bloc Listener"),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
