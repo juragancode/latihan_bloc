@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:latihan_bloc/bloc/counter.dart';
+import 'package:latihan_bloc/bloc/theme.dart';
 import 'package:latihan_bloc/pages/data_widget.dart';
-import 'package:latihan_bloc/pages/other.dart';
+// import 'package:latihan_bloc/pages/other.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Counter myCounter = BlocProvider.of<Counter>(context);
     Counter myCounter = context.read<Counter>();
+    ThemeBloc myTheme = context.read<ThemeBloc>();
 
     return Scaffold(
       appBar: AppBar(
@@ -16,25 +18,14 @@ class HomePage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const OtherPage(),
-
-              // Navigator.of(context).push(
-              //   MaterialPageRoute(
-              //     builder: (context) => BlocProvider.value(
-              //       value: myCounter,
-              //       child: const OtherPage(),
-              //     ),
-
-              // builder: (context) => BlocProvider(
-              //   create: (context) => myCounter,
-              //   child: const OtherPage(),
-              // ),
-            ),
-          );
+          // Navigator.of(context).push(
+          //   MaterialPageRoute(
+          //     builder: (context) => const OtherPage(),
+          //   ),
+          // );
+          myTheme.changeTheme();
         },
-        child: Icon(Icons.arrow_forward_ios),
+        child: Icon(Icons.change_circle_outlined),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
