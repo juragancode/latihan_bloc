@@ -22,7 +22,6 @@ class CenterWidget extends StatelessWidget {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text("Dark theme active"),
-                  duration: Duration(milliseconds: 500),
                 ),
               );
             },
@@ -39,7 +38,7 @@ class CenterWidget extends StatelessWidget {
             listener: (context, state) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Text("Dark theme active"),
+                  content: Text("Kelipatan 5"),
                   duration: Duration(milliseconds: 500),
                 ),
               );
