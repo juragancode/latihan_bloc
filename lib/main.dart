@@ -14,13 +14,17 @@ class MyApp extends StatelessWidget {
 
   final ThemeBloc myTheme = ThemeBloc();
 
-  // Counter mycounter = Counter();
-  // final router = myRouter();
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => myTheme,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => Counter(),
+        ),
+        BlocProvider(
+          create: (context) => myTheme,
+        ),
+      ],
       child: BlocBuilder<ThemeBloc, bool>(
         bloc: myTheme,
         builder: (context, state) {
@@ -30,10 +34,25 @@ class MyApp extends StatelessWidget {
               create: (context) => Counter(),
               child: HomePage(),
             ),
-            // onGenerateRoute: router.onRoute,
           );
         },
       ),
     );
+    // return BlocProvider(
+    //   create: (context) => myTheme,
+    //   child: BlocBuilder<ThemeBloc, bool>(
+    //     bloc: myTheme,
+    //     builder: (context, state) {
+    //       return MaterialApp(
+    //         theme: state == true ? ThemeData.light() : ThemeData.dark(),
+    //         home: BlocProvider(
+    //           create: (context) => Counter(),
+    //           child: HomePage(),
+    //         ),
+    //         // onGenerateRoute: router.onRoute,
+    //       );
+    //     },
+    //   ),
+    // );
   }
 }
