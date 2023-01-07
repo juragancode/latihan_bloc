@@ -11,18 +11,12 @@ class HomePage extends StatelessWidget {
     // Counter myCounter = BlocProvider.of<Counter>(context);
     Counter myCounter = context.read<Counter>();
     ThemeBloc myTheme = context.read<ThemeBloc>();
-
     return Scaffold(
       appBar: AppBar(
         title: Text("Flutter Bloc Provider"),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Navigator.of(context).push(
-          //   MaterialPageRoute(
-          //     builder: (context) => const OtherPage(),
-          //   ),
-          // );
           myTheme.changeTheme();
         },
         child: Icon(Icons.change_circle_outlined),

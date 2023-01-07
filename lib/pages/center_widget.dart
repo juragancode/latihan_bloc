@@ -13,16 +13,33 @@ class CenterWidget extends StatelessWidget {
     Counter myCounter = context.read<Counter>();
 
     return Center(
-      child: BlocBuilder(
-        bloc: myCounter,
-        builder: (context, state) {
-          return Center(
-            child: Text(
-              "$state",
-              style: TextStyle(fontSize: 50, color: Colors.white),
+      child: BlocListener<Counter, int>(
+        listener: (context, state) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text("kelipatan 5"),
+              duration: Duration(milliseconds: 500),
             ),
           );
         },
+        listenWhen: (previous, current) {
+          if (current % 5 == 0) {
+            return true;
+          } else {
+            return false;
+          }
+        },
+        child: BlocBuilder(
+          bloc: myCounter,
+          builder: (context, state) {
+            return Center(
+              child: Text(
+                "$state",
+                style: TextStyle(fontSize: 50, color: Colors.white),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
