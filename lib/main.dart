@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:latihan_bloc/app.dart';
-import 'package:latihan_bloc/bloc/counter.dart';
-import 'package:latihan_bloc/bloc/theme.dart';
+import 'package:latihan_bloc/bloc/user.dart';
+import 'package:latihan_bloc/pages/home.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,16 +10,11 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => Counter(),
-        ),
-        BlocProvider(
-          create: (context) => ThemeBloc(),
-        ),
-      ],
-      child: App(),
+    return MaterialApp(
+      home: BlocProvider(
+        create: (context) => UserBloc(),
+        child: HomePage(),
+      ),
     );
   }
 }

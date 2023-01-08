@@ -1,66 +1,54 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:latihan_bloc/bloc/counter.dart';
-import 'package:latihan_bloc/bloc/theme.dart';
-import 'package:latihan_bloc/pages/data_widget.dart';
-// import 'package:latihan_bloc/pages/other.dart';
+import 'package:latihan_bloc/bloc/user.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Counter myCounter = BlocProvider.of<Counter>(context);
-    Counter myCounter = context.read<Counter>();
-    ThemeBloc myTheme = context.read<ThemeBloc>();
+    UserBloc userBloc = context.read<UserBloc>();
+
     return Scaffold(
       appBar: AppBar(
-        title: Text("Flutter Multi Bloc Listener"),
+        title: Text("Bloc Selector"),
+        centerTitle: true,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          myTheme.changeTheme();
-        },
-        child: Icon(Icons.change_circle_outlined),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: ListView(
+        padding: EdgeInsets.all(20),
         children: [
+          BlocBuilder<UserBloc, Map<String, dynamic>>(
+            bloc: userBloc,
+            builder: (context, state) {
+              return Text("Nama : ${state['name']}");
+            },
+          ),
+          BlocBuilder<UserBloc, Map<String, dynamic>>(
+            bloc: userBloc,
+            builder: (context, state) {
+              return Text("Umur : ${state['age']} Tahun");
+            },
+          ),
+          SizedBox(height: 20),
+          TextField(
+            onChanged: (value) => userBloc.changeName(value),
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+            ),
+          ),
+          SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Material(
-                borderRadius: BorderRadius.circular(25),
-                color: Colors.blue,
-                child: InkWell(
-                  borderRadius: BorderRadius.circular(25),
-                  onTap: () {
-                    myCounter.kurangData();
-                  },
-                  child: const SizedBox(
-                    height: 100,
-                    width: 70,
-                    child: Center(
-                      child: Icon(Icons.remove, color: Colors.white),
-                    ),
-                  ),
-                ),
+              IconButton(
+                onPressed: () {
+                  userBloc.changeAge(userBloc.state["age"] - 1);
+                },
+                icon: Icon(Icons.remove),
               ),
-              DataWidget(),
-              Material(
-                borderRadius: BorderRadius.circular(25),
-                color: Colors.blue,
-                child: InkWell(
-                  borderRadius: BorderRadius.circular(25),
-                  onTap: () {
-                    myCounter.tambahData();
-                  },
-                  child: const SizedBox(
-                    height: 100,
-                    width: 70,
-                    child: Center(
-                      child: Icon(Icons.add, color: Colors.white),
-                    ),
-                  ),
-                ),
+              IconButton(
+                onPressed: () {
+                  userBloc.changeAge(userBloc.state["age"] + 1);
+                },
+                icon: Icon(Icons.add),
               ),
             ],
           ),

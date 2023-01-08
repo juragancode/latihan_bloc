@@ -21,6 +21,7 @@ class CenterWidget extends StatelessWidget {
             listener: (context, state) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
+                  duration: Duration(milliseconds: 300),
                   content: Text("Dark theme active"),
                 ),
               );
@@ -52,62 +53,64 @@ class CenterWidget extends StatelessWidget {
             },
           ),
         ],
-        child: BlocBuilder(
+        child: BlocBuilder<Counter, int>(
           bloc: myCounter,
           builder: (context, state) {
             return Center(
               child: Text(
                 "$state",
-                style: TextStyle(fontSize: 50, color: Colors.white),
+                style: const TextStyle(fontSize: 50, color: Colors.white),
               ),
             );
           },
         ),
       ),
-    );
 
-    // child: BlocListener<ThemeBloc, bool>(
-    //   listener: (context, state) {
-    //     ScaffoldMessenger.of(context).showSnackBar(
-    //       SnackBar(
-    //         content: Text("Dark theme active"),
-    //         duration: Duration(milliseconds: 500),
-    //       ),
-    //     );
-    //   },
-    //   listenWhen: (previous, current) {
-    //     if (current == false) {
-    //       return true;
-    //     } else {
-    //       return false;
-    //     }
-    //   },
-    //   child: BlocListener<Counter, int>(
-    //     listener: (context, state) {
-    //       ScaffoldMessenger.of(context).showSnackBar(
-    //         SnackBar(
-    //           content: Text("kelipatan 5"),
-    //           duration: Duration(milliseconds: 500),
-    //         ),
-    //       );
-    //     },
-    //     listenWhen: (previous, current) {
-    //       if (current % 5 == 0) {
-    //         return true;
-    //       } else {
-    //         return false;
-    //       }
-    //     },
-    // child: BlocBuilder(
-    //   bloc: myCounter,
-    //   builder: (context, state) {
-    //     return Center(
-    //       child: Text(
-    //         "$state",
-    //         style: TextStyle(fontSize: 50, color: Colors.white),
-    //       ),
-    //     );
-    //   },
-    // ),
+      // child: BlocListener<ThemeBloc, bool>(
+      //   listener: (context, state) {
+      //     ScaffoldMessenger.of(context).showSnackBar(
+      //       SnackBar(
+      //         content: Text("Dark theme active"),
+      //         duration: Duration(milliseconds: 500),
+      //       ),
+      //     );
+      //   },
+      //   listenWhen: (previous, current) {
+      //     if (current == false) {
+      //       return true;
+      //     } else {
+      //       return false;
+      //     }
+      //   },
+      //   child: BlocListener<Counter, int>(
+      //     listener: (context, state) {
+      //       ScaffoldMessenger.of(context).showSnackBar(
+      //         SnackBar(
+      //           content: Text("kelipatan 5"),
+      //           duration: Duration(milliseconds: 500),
+      //         ),
+      //       );
+      //     },
+      //     listenWhen: (previous, current) {
+      //       if (current % 5 == 0) {
+      //         return true;
+      //       } else {
+      //         return false;
+      //       }
+      //     },
+      //     child: BlocBuilder(
+      //       bloc: myCounter,
+      //       builder: (context, state) {
+      //         return Center(
+      //           child: Text(
+      //             "$state",
+      //             style: TextStyle(fontSize: 50, color: Colors.white),
+      //           ),
+      //         );
+      //       },
+      //     ),
+      //   ),
+      // ),
+    );
   }
 }
