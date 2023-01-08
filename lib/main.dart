@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:latihan_bloc/bloc/user.dart';
+import 'package:latihan_bloc/bloc/counter.dart';
 import 'package:latihan_bloc/pages/home.dart';
 
 void main() {
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: BlocProvider(
-        create: (context) => UserBloc(),
+        create: (context) => Counter(),
         child: HomePage(),
       ),
     );
