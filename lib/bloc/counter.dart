@@ -9,7 +9,7 @@ class Counter extends Bloc<CounterEvent, int> {
     });
     on<IncrementCounter>((event, emit) {
       // Ini proses untuk evente ...
-      emit(state - 1);
+      emit(state + 1);
     });
   }
 
