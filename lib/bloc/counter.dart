@@ -5,11 +5,11 @@ class Counter extends Bloc<CounterEvent, int> {
   Counter(int initial) : super(initial) {
     on<DecrementCounter>((event, emit) {
       // Ini proses untuk event decrement
-      emit(state - 1);
+      emit((state - 1) % event.value);
     });
     on<IncrementCounter>((event, emit) {
       // Ini proses untuk evente ...
-      emit(state + 1);
+      emit((state + 1) * event.value);
     });
   }
 

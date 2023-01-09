@@ -3,8 +3,15 @@
 //   increment,
 // }
 
-class CounterEvent {}
+class CounterEvent {
+  CounterEvent(this.value);
+  int value;
+}
 
-class DecrementCounter extends CounterEvent {}
+class DecrementCounter extends CounterEvent {
+  DecrementCounter(int value) : super(value);
+}
 
-class IncrementCounter extends CounterEvent {}
+class IncrementCounter extends CounterEvent {
+  IncrementCounter(int value) : super(value);
+}

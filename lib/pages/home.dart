@@ -7,6 +7,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Counter myCounter = Counter(0);
+    int value = 10;
 
     return Scaffold(
       appBar: AppBar(
@@ -27,11 +28,11 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 IconButton(
-                  onPressed: () => myCounter.add(DecrementCounter()),
+                  onPressed: () => myCounter.add(DecrementCounter(value)),
                   icon: Icon(Icons.remove),
                 ),
                 IconButton(
-                  onPressed: () => myCounter.add(IncrementCounter()),
+                  onPressed: () => myCounter.add(IncrementCounter(value)),
                   icon: Icon(Icons.add),
                 ),
               ],
