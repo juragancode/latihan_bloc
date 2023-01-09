@@ -6,7 +6,7 @@ import 'package:latihan_bloc/bloc/counter_event.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Counter myCounter = Counter(9); // hanya dibaca 1X
+    Counter myCounter = Counter(0);
 
     return Scaffold(
       appBar: AppBar(
@@ -27,11 +27,11 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 IconButton(
-                  onPressed: () => myCounter.add(CounterEvent.decrement),
+                  onPressed: () => myCounter.add(DecrementCounter()),
                   icon: Icon(Icons.remove),
                 ),
                 IconButton(
-                  onPressed: () => myCounter.add(CounterEvent.increment),
+                  onPressed: () => myCounter.add(IncrementCounter()),
                   icon: Icon(Icons.add),
                 ),
               ],
