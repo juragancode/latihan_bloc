@@ -6,7 +6,7 @@ import 'package:latihan_bloc/bloc/counter_event.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Counter myCounter = Counter(); // hanya dibaca 1X
+    Counter myCounter = Counter(9); // hanya dibaca 1X
 
     return Scaffold(
       appBar: AppBar(
