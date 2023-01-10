@@ -22,13 +22,23 @@ class HomePage extends StatelessWidget {
             itemBuilder: (context, index) {
               User user = state.allUsers[index];
               return ListTile(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => EditPage(user),
+                    ),
+                  );
+                },
                 leading: CircleAvatar(
                   child: Text("${index + 1}"),
                 ),
                 title: Text(user.name),
                 subtitle: Text("${user.age}"),
                 trailing: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    userB.add(DeleteUserEvent(user));
+                  },
                   icon: Icon(Icons.delete),
                 ),
               );

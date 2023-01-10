@@ -8,3 +8,5 @@ export 'package:latihan_bloc/pages/home/home.dart';
 export 'package:latihan_bloc/pages/add/add.dart';
 export 'package:latihan_bloc/pages/app.dart';
 export 'package:latihan_bloc/pages/general_observer.dart';
+export 'package:latihan_bloc/pages/edit/edit.dart';
+export 'dart:math';

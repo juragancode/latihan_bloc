@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:latihan_bloc/bloc/export.dart';
 
 class AddPage extends StatelessWidget {
@@ -55,7 +53,7 @@ class AddPage extends StatelessWidget {
                 );
                 Navigator.pop(context);
               },
-              child: Text("Submit"),
+              child: Text("Add User"),
             ),
           ],
         ),
