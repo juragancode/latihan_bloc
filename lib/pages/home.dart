@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Flutter Bloc - Enum Class"),
+        title: Text("Flutter Bloc - General Observer"),
         centerTitle: true,
       ),
       body: Center(
