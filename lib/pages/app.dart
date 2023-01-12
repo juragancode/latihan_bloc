@@ -1,13 +1,15 @@
 import 'package:latihan_bloc/bloc/export.dart';
 
 class App extends StatelessWidget {
+  final RandomRepository randomRepository = RandomRepository();
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => UserBloc()),
+        // -------------- Multi Bloc Provider --------------
 
-        //
+        BlocProvider(create: (context) => RandomBloc(randomRepository)),
       ],
       child: AppView(),
     );
