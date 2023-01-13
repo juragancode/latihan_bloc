@@ -30,11 +30,12 @@ dependencies:
   bloc: ^8.1.0
   cupertino_icons: ^1.0.2
   equatable: ^2.0.5
-  liquid_progress_indicator: ^0.4.0
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.1
   http: ^0.13.5
+  liquid_progress_indicator: ^0.4.0
+  loading_animation_widget: ^1.2.0+4
 
 dev_dependencies:
   flutter_lints: ^1.0.0

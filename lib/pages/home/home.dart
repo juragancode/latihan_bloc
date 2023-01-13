@@ -15,21 +15,29 @@ class HomePage extends StatelessWidget {
           bloc: randomB,
           builder: (context, state) {
             if (state is RandomLoading) {
-              return SizedBox(
-                height: 150,
-                width: 150,
-                child: LiquidCircularProgressIndicator(
-                  value: 0.6,
-                  valueColor: AlwaysStoppedAnimation(Colors.teal),
-                  backgroundColor: Colors.white,
-                  borderColor: Colors.teal,
-                  borderWidth: 5.0,
-                  center: Text(
-                    "Loading...",
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  ),
-                ),
-              );
+              /// Loadaing Effect 2 - loading_animation_widget
+              return LoadingAnimationWidget.newtonCradle(
+                color: Colors.teal,
+                size: 200,
+              )
+
+                  /// Loadaing Effect 1 - liquid_progress_indicator
+                  // SizedBox(
+                  //   height: 150,
+                  //   width: 150,
+                  //   child: LiquidCircularProgressIndicator(
+                  //     value: 0.6,
+                  //     valueColor: AlwaysStoppedAnimation(Colors.teal),
+                  //     backgroundColor: Colors.white,
+                  //     borderColor: Colors.teal,
+                  //     borderWidth: 5.0,
+                  //     center: Text(
+                  //       "Loading...",
+                  //       style: TextStyle(fontSize: 20, color: Colors.white),
+                  //     ),
+                  //   ),
+                  // )
+                  ;
             }
             if (state is RandomError) {
               return Column(
