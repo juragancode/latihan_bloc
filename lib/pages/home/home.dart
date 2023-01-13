@@ -15,14 +15,17 @@ class HomePage extends StatelessWidget {
           bloc: randomB,
           builder: (context, state) {
             if (state is RandomLoading) {
-              /// Loadaing Effect 2 - loading_animation_widget
-              return LoadingAnimationWidget.newtonCradle(
-                color: Colors.teal,
-                size: 200,
-              )
+              /// Loadaing Effect 3 -  lottie
+              return Lottie.asset("asset/lottie/98432-loading.json")
+
+                  /// Loadaing Effect 2 - loading_animation_widget
+                  // return LoadingAnimationWidget.newtonCradle(
+                  //   color: Colors.teal,
+                  //   size: 200,
+                  // )
 
                   /// Loadaing Effect 1 - liquid_progress_indicator
-                  // SizedBox(
+                  // return SizedBox(
                   //   height: 150,
                   //   width: 150,
                   //   child: LiquidCircularProgressIndicator(

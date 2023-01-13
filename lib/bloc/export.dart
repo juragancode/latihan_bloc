@@ -18,3 +18,4 @@ export 'package:latihan_bloc/data/models/data_home.dart';
 export 'package:latihan_bloc/data/repositories/random_repository.dart';
 export 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 export 'package:loading_animation_widget/loading_animation_widget.dart';
+export 'package:lottie/lottie.dart';
