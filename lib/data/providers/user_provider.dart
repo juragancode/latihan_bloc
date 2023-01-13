@@ -15,6 +15,13 @@ class UserProvider {
       }
       Map<String, dynamic> body = jsonDecode(response.body);
 
+      if (body["data"][0]["avatar"] == null) {
+        return {
+          "error": true,
+          "message": "${response.statusCode}",
+        };
+      }
+
       return {
         "error": false,
         "message": "Berhasil Get Data User",

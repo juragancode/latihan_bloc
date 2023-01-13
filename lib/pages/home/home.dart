@@ -6,6 +6,7 @@ class HomePage extends StatelessWidget {
     RandomBloc randomB = context.read<RandomBloc>();
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.teal,
         title: Text("Random App"),
         centerTitle: true,
       ),
@@ -14,7 +15,24 @@ class HomePage extends StatelessWidget {
           bloc: randomB,
           builder: (context, state) {
             if (state is RandomLoading) {
-              return CircularProgressIndicator();
+              return SizedBox(
+                height: 150,
+                width: 150,
+                child: LiquidCircularProgressIndicator(
+                  value: 0.6, // Defaults to 0.5.
+                  valueColor: AlwaysStoppedAnimation(Colors
+                      .teal), // Defaults to the current Theme's accentColor.
+                  backgroundColor: Colors
+                      .white, // Defaults to the current Theme's backgroundColor.
+                  borderColor: Colors.teal,
+                  borderWidth: 5.0,
+                  // direction: Axis.horizontal,
+                  center: Text(
+                    "Loading...",
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  ),
+                ),
+              );
             }
             if (state is RandomError) {
               return Text("Terjadi Kesalahan");
@@ -77,6 +95,7 @@ class HomePage extends StatelessWidget {
           randomB.add(GetRandomEvent());
           randomB.state.data.toJson();
         },
+        backgroundColor: Colors.teal,
         child: Icon(Icons.refresh),
       ),
     );
