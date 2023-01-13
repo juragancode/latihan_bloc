@@ -8,11 +8,12 @@ class RandomRepository {
     Map<String, dynamic> dataUser = await userProvider.getDataUser();
     Map<String, dynamic> dataMasakan = await masakanProvider.getDataMasakan();
 
-    if (dataMasakan["error"] == true || dataUser["error"] == true) {
-      return {
-        "error": true,
-        "message": "Terjadi error...",
-      };
+    if (dataUser["error"] == true) {
+      return dataUser;
+    }
+
+    if (dataMasakan["error"] == true) {
+      return dataMasakan;
     }
 
     // GET RANDOM USER

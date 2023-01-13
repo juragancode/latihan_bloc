@@ -17,10 +17,12 @@ class RandomLoading extends RandomState {
   RandomLoading(DataHomeModel data) : super(data);
 }
 
-class RandomError extends RandomState {
-  RandomError(DataHomeModel data) : super(data);
-}
-
 class RandomCompleted extends RandomState {
   RandomCompleted(DataHomeModel data) : super(data);
+}
+
+class RandomError extends RandomState {
+  RandomError(DataHomeModel data, this.error) : super(data);
+
+  String error;
 }

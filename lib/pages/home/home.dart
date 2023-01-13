@@ -19,14 +19,11 @@ class HomePage extends StatelessWidget {
                 height: 150,
                 width: 150,
                 child: LiquidCircularProgressIndicator(
-                  value: 0.6, // Defaults to 0.5.
-                  valueColor: AlwaysStoppedAnimation(Colors
-                      .teal), // Defaults to the current Theme's accentColor.
-                  backgroundColor: Colors
-                      .white, // Defaults to the current Theme's backgroundColor.
+                  value: 0.6,
+                  valueColor: AlwaysStoppedAnimation(Colors.teal),
+                  backgroundColor: Colors.white,
                   borderColor: Colors.teal,
                   borderWidth: 5.0,
-                  // direction: Axis.horizontal,
                   center: Text(
                     "Loading...",
                     style: TextStyle(fontSize: 20, color: Colors.white),
@@ -35,7 +32,13 @@ class HomePage extends StatelessWidget {
               );
             }
             if (state is RandomError) {
-              return Text("Terjadi Kesalahan");
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text("Terjadi Kesalahan"),
+                  Text("Status Code: ${state.error}"),
+                ],
+              );
             }
             if (state is RandomInitial) {
               return Text("No data available");
@@ -63,19 +66,26 @@ class HomePage extends StatelessWidget {
                 SizedBox(height: 15),
                 Text("🍹🍭🍧🎂🍰🌮🌭🍟🍡🧃🍷🧁🍫🍬🍇🍓🍉🥗🍵🍕"),
                 SizedBox(height: 15),
-                Text("${dataHome.masakan}"),
-                SizedBox(height: 5),
+                Text(
+                  "${dataHome.masakan}",
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: 15),
                 Text("${dataHome.category}"),
-                SizedBox(height: 5),
+                SizedBox(height: 15),
                 Text("${dataHome.masDaerah}"),
-                SizedBox(height: 5),
-                Text("${dataHome.tag}"),
-                SizedBox(height: 10),
+                SizedBox(height: 15),
+                Text((dataHome.tag != "null") == true
+                    ? "#${dataHome.tag}"
+                    : "#"),
                 SizedBox(
-                  height: 150,
-                  width: 200,
-                  child: Container(
-                    child: Image.network("${dataHome.gambarMasakan}"),
+                  height: 250,
+                  width: 250,
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: Container(
+                      child: Image.network("${dataHome.gambarMasakan}"),
+                    ),
                   ),
                 ),
                 SizedBox(height: 5),
